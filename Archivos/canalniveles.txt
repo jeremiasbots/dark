@@ -1,0 +1,27 @@
+const Discord = require('discord.js');
+const db = require('megadb')
+const canalniveles = new db.crearDB("canalniveles")
+
+
+module.exports = {
+  name: "canalniveles", 
+  alias: ["cn"], 
+
+execute (client, message, args){
+
+  var perms = message.member.hasPermission("ADMINISTRATOR")
+  if(!perms) return message.channel.send("No tienes los permisos para definir el canal de niveles!")
+
+  const canal = message.mentions.channels.first() 
+  if(!canal) return message.channel.send("Menciona un canal!")
+  const canalservidor = message.guild.channels.resolve(canal.id)
+  if(!canalservidor) return message.channel.send("El canal debe estar en el servidor!")
+
+  canalniveles.establecer(message.guild.id, canal.id)
+
+  message.channel.send(`El canal para enviar subida de nivel ahora es **${canal.name}**`)
+
+
+ }
+
+} 

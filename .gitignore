@@ -1,0 +1,5 @@
+node_modules/
+mega_databases/
+*.sqlite
+data.txt
+*.env

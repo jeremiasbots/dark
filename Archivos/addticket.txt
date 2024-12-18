@@ -1,0 +1,73 @@
+const { Interaction, Client } = require('discord.js')
+const Discord = require('discord.js')
+const client = new Discord.Client({ intents: 32767 })
+
+module.exports = {
+    name: "addticketbutton",//ESTO ES UN CONTEXT MENU? || no, context menu es "type: 2" | A ya :v
+    description: "Agrega botones para crear tickets a un mensaje",
+    type: 1,
+    options: [
+        {
+            name: "id",
+            description: "El id del mensaje",
+            type: 3,
+            required: true
+        },
+        {
+            name: "emoji",
+            description: "El emoji del boton",
+            type: 3,
+            required: true
+        },
+        {
+            name: "titulo",
+            description: "El texto del boton",
+            type: 3,
+            required: true
+        }
+    ],
+    /**
+     * @param {Interaction} interaction
+     * @param {Client} client
+     */ // pro eres, args en slash si XDDDDDDDDDDDDDDDD | no le se al together y da mal eso
+    async aplication(interaction, client){
+
+        if(!interaction.member.permissions.has("ADMINISTRATOR")){
+            interaction.reply({ content: client.la[interaction.locale]["addbuttons"]["admin"]["var5"], ephemeral: true })
+            return;
+        }
+
+
+        const text = interaction.options.getString("titulo")
+
+        const emoji = interaction.options.getString("emoji")
+
+        const messageid = interaction.options.getString("id")
+
+        let fetchmessage = await interaction.channel.messages.fetch(messageid)
+
+        if(fetchmessage.author.id !== client.user.id) return interaction.reply(client.la[interaction.locale]["addbuttons"]["advert"]["var4"])
+
+
+
+        interaction.channel.messages.fetch(messageid).then((msg) => {
+            const row = new Discord.MessageActionRow()
+            .addComponents(
+                new Discord.MessageButton()
+                .setCustomId("tickets")
+                .setStyle("SUCCESS")
+                .setLabel(text)
+                .setEmoji(emoji)
+            )
+
+            msg.edit({ content: `${msg.content}`, components: [row] })
+        })
+
+        interaction.reply({ content: client.la[interaction.locale]["addbuttons"]["normal"]["var6"], ephemeral: true })
+
+        
+
+       
+
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "ping": {
+        "var1": "My ping is **{ping}ms**"
+    },
+    "say": {
+        "var2": "The message has been sent"
+    },
+    "work": {
+        "var3":["Hey you killed bob the builder and won **{dinero}$**", "Hey, you freed the developers and you won **{dinero}$**"]
+    },
+    "addbuttons": {
+        "advert":
+        {
+            "var4": "The message is not mine, I can not edit it"
+        },
+        "admin": {
+            "var5": "You lack `ADMINISTRATOR` permission to use this command."
+        },
+        "normal": {
+            "var6": "The button has been added"
+        }
+    },
+    "allowrole": {
+        "var7": "You lack `ADMINISTRATOR` permission to use this command.",
+        "var8": "Has been set as ticketing role"
+    },
+    "category": {
+        "var9": "You lack `ADMINISTRATOR` permission to use this command.",
+        "var10": "The category you chose has been established as a category for the tickets"
+    }
+}

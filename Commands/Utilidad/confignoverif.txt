@@ -1,0 +1,37 @@
+const Discord = require('discord.js');
+const client = new Discord.Client({ intents: 32767 })
+const db = require('megadb')
+const rolenoverif = new db.crearDB("noverif")
+
+
+module.exports = {
+  name: "config-noverif", 
+  alias: [], 
+  developer: false,
+  premium: false,
+  cooldown: 0,
+  /**
+   * 
+   * @param {Discord.Client} client 
+   * @param {Discord.Message} message 
+   * @param {string[]} args 
+   */
+
+async execute (client, message, args){
+
+    const role = message.mentions.roles.first()
+
+    if(!role) return message.reply("Debes mencionar un rol")
+
+    
+
+
+
+    
+
+
+
+
+ }
+
+} 

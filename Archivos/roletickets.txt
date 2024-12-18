@@ -1,0 +1,50 @@
+const { Interaction, Client } = require('discord.js')
+const Discord = require('discord.js')
+const Schema = require("../../Modelos/roleTickets.js")
+
+module.exports = {
+    name: "roletickets",
+    description: "Habilita a un rol para que pueda ver los tickets",
+    type: 1,
+    beta: true,
+    options: [
+        {
+            name: "rol",
+            description: "El rol que quieres que vea los ticekts",
+            type: 8,
+            required: true
+        }
+    ],
+    /**
+     * @param {Interaction} interaction
+     * @param {Client} client
+     */ 
+    async aplication(interaction, client){
+
+        if(!interaction.member.permissions.has("ADMINISTRATOR")){
+            interaction.reply({ content: client.la[interaction.locale]["allowrole"]["var7"], ephemeral: true })
+            return;
+        }
+
+       
+            let data = await Schema.findOne({ Guild: interaction.guild.id })
+            if(!data){
+                await Schema.create({ Guild: interaction.guild.id })
+            }
+        
+
+        const rol = interaction.options.getRole("rol")
+
+        data.Roles.push(rol.id)
+        await data.save()
+
+        
+      
+        interaction.reply({ content: `${client.la[interaction.locale]["allowrole"]["var8"]} **${rol}**`, ephemeral: true })
+
+        
+
+       
+
+    }
+}

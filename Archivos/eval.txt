@@ -1,0 +1,37 @@
+const Discord = require('discord.js');
+const db = require('megadb')
+
+
+module.exports = {
+  name: "eval", 
+  alias: [], 
+
+execute (client, message, args){
+
+  const embedauthor = new Discord.MessageEmbed()
+  .setTitle("Eval")
+  .setDescription("`Solo mi creador puede usar este comando`")
+  .setColor("RED")
+
+  if(message.author.id !== '691379190842261515') return message.channel.send(embedauthor)
+
+  const command = args.join(" ")
+  if(!command) return message.channel.send("Debes escribir un comando!")
+
+  try {
+    const evaled = eval(command)
+    let palabras = ["token", "destroy"]
+    if(palabras.some(word => message.content.toLowerCase().includes(word))){
+      return message.channel.send("Esas palabras no estan permitidas!")
+    }
+    const embed = new Discord.MessageEmbed()
+    .setColor("GREEN")
+    .setTitle("Evaluado correctamente!")
+    .addField(`**Tipo**:`, `\`\`\```prolog\n${typeof(evaled)}\`\`\``, true)
+
+  }
+
+
+ }
+
+} 

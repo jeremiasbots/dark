@@ -1,0 +1,29 @@
+services:
+  monguito:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/db
+  dark3.1:
+    build: .
+    environment:
+      - TOKEN=exampleToken
+      - PREFIX=$
+      - MONGODB=mongodb://username:password@monguito:27017/darkv3?authSource=admin
+      - TOPGG_TOKEN=topggExampleToken
+      - spotifysecret=exampleSpotifySecret
+      - WEBHOOK_TOKEN=exampleWebHookToken
+      - WEBHOOK_ID=exampleWebHookID
+      - memerapi=exampleMemerAPIToken
+    ports:
+      - "5000:5000"
+    volumes:
+      - mega-data:/home/app/mega_databases
+
+volumes:
+  mongo-data:
+  mega-data:

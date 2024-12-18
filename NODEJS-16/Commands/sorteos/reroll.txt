@@ -1,0 +1,32 @@
+const Discord = require('discord.js');
+const ms = require('ms')
+const db = require('megadb')
+
+
+module.exports = {
+  name: "reroll", 
+  alias: [], 
+
+execute (client, message, args){
+
+  var perms = message.member.hasPermission("ADMINISTRATOR")
+  if(!perms) return message.channel.send("No tienes los permisos para rerollear el ganador!")
+
+  if(!args[0]) return message.channel.send("Eso no es una ID valida!")
+
+  let giveaway = client.giveawaysManager.giveaways.find((g) => g.prize === args.join(" ")) || client.giveawaysManager.giveaways.find((g) => g.messageID === args[0])
+  if(!giveaway) return message.channel.send("No se ha podido encontrar ese sorteo :c")
+
+  client.giveawaysManager.reroll(args[0], {
+    messages: {
+      congrat: 'El nuevo ganador es {winners}',
+      error: 'No participo nadie, no se puede dar un ganador'
+    }
+  }).catch((err) => {
+    message.channel.send(`No se ha encontrado un sorteo con la ID **${messageID}**,  prueba de nuevo`)
+  })
+
+
+ }
+
+} 

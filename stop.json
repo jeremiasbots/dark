@@ -1,0 +1,29 @@
+{
+    "A": {
+        "nombre": "Alejandro",
+        "apellido": "Abril",
+        "pais": "Austria",
+        "animal": "Alce",
+        "fruta": "Arándano",
+        "color": "Azul",
+        "cosa": "Asteroide"
+    },
+    "B": {
+        "nombre": "Bruno",
+        "apellido": "Barrios",
+        "pais": "Bélgica",
+        "animal": "Burro",
+        "fruta": "Bellota",
+        "color": "Blanco",
+        "cosa": "Baile"
+    },
+    "C": {
+        "nombre": "Carlos",
+        "apellido": "Chaves",
+        "pais": "Camboya",
+        "animal": "Cebra",
+        "fruta": "Calabaza",
+        "color": "Celeste",
+        "cosa": "Cabello"
+    }
+}

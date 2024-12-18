@@ -1,0 +1,31 @@
+{
+    "ping": {
+        "var1": "Mi ping es de **{ping}ms**"
+    },
+    "say": {
+        "var2": "Se ha enviado el mensaje"
+    },
+    "work": {
+        "var3": ["Epa, mataste a bob el constructor y ganaste **{dinero}$**", "Epa, liberaste a los developers y ganaste  **{dinero}$**"]
+    },
+    "addbuttons": {
+        "advert":
+        {
+            "var4": "El mensaje no es mío, no lo puedo editar"
+        },
+        "admin": {
+            "var5": "Te falta el permiso `ADMINISTRATOR` para poder usar este comando."
+        },
+        "normal": {
+            "var6": "El boton ha sido agregado"
+        }
+    },
+    "allowrole": {
+        "var7": "Te falta el permiso `ADMINISTRATOR` para poder usar este comando.",
+        "var8": "Se ha establecido como rol de tickets"
+    },
+    "category": {
+        "var9": "Te falta el permiso `ADMINISTRATOR` para poder usar este comando.",
+        "var10": "Se ha establecido como categoria para los tickets la que elegiste"
+    }
+}
